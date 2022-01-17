@@ -1,8 +1,9 @@
+/* Add style to whole document */
 html {
     text-align: center;
-    font-family: Monaco;
+    font-family: Roboto, sans-serif;
   }
-  
+  /* use float */
   .right {
     float: right;
   }
@@ -21,6 +22,7 @@ html {
     border: 1px solid black;
   }
   
+  /* use grid for the first time*/
   .gridContainer {
     margin-top: 25px;
     margin-right: 40px;
