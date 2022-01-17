@@ -1,20 +1,10 @@
-function makeGrid(){
-    let container = document.getElementById('container');
+//https://www.youtube.com/watch?v=ACP61O9f618&t=760s
+const container = document.getElementById('container')
 
-    for(let i=0;i<11;i++){
-        let myRow = document.createElement("tr")
-        myRow.id = "row" + i;
-
-        container.appendChild(myRow);
-        let rowNum = document.getElementById("row" + i);
-
-        for(let j=0; j<11;j++){
-            let myCell = document.createElement("td");
-            rowNum.appendChild(myCell);
-        }
-
+function creatDivs(num) {
+    for(let i = 0;i < (num*num); i++) {
+        const div = document.createElement('div') 
+        container.appendChild(div).classList.add('box')
     }
 }
-
-makeGrid();
-
+creatDivs(16)

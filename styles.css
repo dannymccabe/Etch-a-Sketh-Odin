@@ -3,3 +3,21 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+#container {
+    background-color: grey;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 200px;
+}
+
+#container .box {
+    background-color: pink;
+    border-style: solid;
+    align-content: stretch;
+    align-items: stretch;
+    gap: 0;
+}
