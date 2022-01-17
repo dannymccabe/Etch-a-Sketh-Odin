@@ -1,19 +1,47 @@
-const container = document.querySelector('.container')
-const btnBlack = document.createElement('button')
-const btnRgb = document.createElement('button')
-const btnGray = document.createElement('button')
-const btnSize = document.createElement('button')
-const section = document.querySelector('.section');
-const buttonsContainer = document.querySelector('.buttons');
+const grid = document.querySelector(".gridContainer");
+const userInput = document.getElementById("quantity");
+const resetButton = document.querySelector(".reset");
 
+createGrid = () => {
+  for (let i = 0; i < 256; i++) {
+    const div = document.createElement("div");
+    div.classList.add("square");
+    grid.appendChild(div);
+  }
+};
 
-function creatDivs(col , rows) {
-    for(let i = 0;i < (col * rows); i++) {
-        const div = document.createElement('div') ;
-        div.style.border = '1px solid red';
-        container.style.gridTemplateColumns = `repeat(${col}, 1fr)`;
-        container.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
-        container.appendChild(div).classList.add('box');
-    }
-}
-creatDivs(16,16)
+updateGrid = () => {
+  grid.innerHTML = "";
+  grid.style.setProperty(
+    "grid-template-columns",
+    `repeat(${userInput.value}, 2fr)`
+  );
+  grid.style.setProperty(
+    "grid-template-rows",
+    `repeat(${userInput.value}, 2fr)`
+  );
+  for (let i = 0; i < userInput.value * userInput.value; i++) {
+    const div = document.createElement("div");
+    div.classList.add("square");
+    grid.appendChild(div);
+  }
+  console.log(userInput.value);
+};
+
+const square = document.querySelector("div");
+square.addEventListener("mouseover", function(event) {
+  event.target.classList.replace("square", "color");
+});
+
+userInput.addEventListener("change", updateGrid);
+
+resetButton.addEventListener("click", function() {
+  grid.innerHTML = "";
+  userInput.value = "";
+  grid.style.setProperty("grid-template-columns", `repeat(16, 2fr)`);
+  grid.style.setProperty("grid-template-rows", `repeat(16, 2fr)`);
+  createGrid();
+});
+
+createGrid();
+
